@@ -40,11 +40,11 @@
                     <form action="<?= base_url()?>C_login/proses_login" method="post">
                         <div class="form-group">
                             <label>Username</label>
-                            <input type="text" class="form-control" placeholder="Username" name="username">
+                            <input type="text" class="form-control" placeholder="Username" name="username" required="true">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password">
+                            <input type="password" class="form-control" placeholder="Password" name="password" required="true">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary btn-flat m-b-15 m-t-15">Sign in</button><br><br>
