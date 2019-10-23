@@ -37,7 +37,7 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form action="<?= base_url()?>C_login/proses_login" method="post">
+                    <form action="<?= base_url()?>admin/C_login/proses_login" method="post">
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" class="form-control" placeholder="Username" name="username" required="true">

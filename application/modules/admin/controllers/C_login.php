@@ -10,7 +10,7 @@ class C_login extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('v_login');
+		$this->load->view('admin/v_login');
 	}
 	public function proses_login()
 	{
@@ -30,33 +30,33 @@ class C_login extends CI_Controller {
 						'logged' => true
 					];
 					$this->session->set_userdata($data);
-					echo "berhasil login";
+					redirect('admin/C_dashboard','refresh');
 				} 
 				else 
 				{
 					$this->session->set_flashdata('pesan','password Salah');
-					redirect('C_login/index','refresh');
+					redirect('admin/C_login/index','refresh');
 				}
 				
 			} 
 			else 
 			{
 				$this->session->set_flashdata('pesan','Username tidak terdaftar');
-				redirect('C_login/index','refresh');
+				redirect('admin/C_login/index','refresh');
 			}
 			
 		}
 		else
 		{
 			$this->session->set_flashdata('pesan','session yg sebelumnya belum dilogout');
-			redirect('C_login/index','refresh');
+			redirect('admin/C_login/index','refresh');
 		}
 		
 	}
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('C_login/index','refresh');
+		redirect('admin/C_login/index','refresh');
 	}
 
 }
