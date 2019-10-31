@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Okt 2019 pada 04.46
+-- Generation Time: 31 Okt 2019 pada 08.14
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `id_level`) VALUES
 (1, 'admin', 'admin', 'Administrator 1', 1),
-(2, 'pemimpin', 'pemimpin', 'Pemimpin 1', 3);
+(2, 'manager', 'manager', 'Manager 1', 3);
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE `level` (
 INSERT INTO `level` (`id_level`, `nama_level`) VALUES
 (1, 'admin'),
 (2, 'pelanggan'),
-(3, 'pemimpin');
+(3, 'manager');
 
 -- --------------------------------------------------------
 
@@ -77,8 +77,16 @@ CREATE TABLE `pelanggan` (
   `nomor_kwh` varchar(50) NOT NULL,
   `nama_pelanggan` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
-  `id_tarif` int(11) NOT NULL
+  `id_tarif` int(11) NOT NULL,
+  `id_level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id_pelanggan`, `username`, `password`, `nomor_kwh`, `nama_pelanggan`, `alamat`, `id_tarif`, `id_level`) VALUES
+(1, 'fani', 'fani', '45GHSJG78H', 'Fajar Riski S.', 'Jombang', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -141,6 +149,13 @@ CREATE TABLE `tarif` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data untuk tabel `tarif`
+--
+
+INSERT INTO `tarif` (`id_tarif`, `daya`, `tarifperkwh`) VALUES
+(1, '220watt', 5000);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -162,7 +177,8 @@ ALTER TABLE `level`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`),
-  ADD KEY `id_tarif` (`id_tarif`);
+  ADD KEY `id_tarif` (`id_tarif`),
+  ADD KEY `id_level` (`id_level`);
 
 --
 -- Indexes for table `pembayaran`
@@ -211,7 +227,7 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
@@ -235,7 +251,7 @@ ALTER TABLE `tagihan`
 -- AUTO_INCREMENT for table `tarif`
 --
 ALTER TABLE `tarif`
-  MODIFY `id_tarif` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tarif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -251,7 +267,8 @@ ALTER TABLE `admin`
 -- Ketidakleluasaan untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  ADD CONSTRAINT `pelanggan_ibfk_1` FOREIGN KEY (`id_tarif`) REFERENCES `tarif` (`id_tarif`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pelanggan_ibfk_1` FOREIGN KEY (`id_tarif`) REFERENCES `tarif` (`id_tarif`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pelanggan_ibfk_2` FOREIGN KEY (`id_level`) REFERENCES `level` (`id_level`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `pembayaran`
