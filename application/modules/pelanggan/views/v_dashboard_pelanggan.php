@@ -78,7 +78,7 @@
             <div class="col-12">
               <div class="row align-items-center">
                 <div class="col-lg-8 mb-4">
-                  <h1  data-aos="fade-up" data-aos-delay="100">Selamat Datang (nama akun) ....!!!</h1>
+                  <h1  data-aos="fade-up" data-aos-delay="100">Selamat Datang <?php echo $this->session->userdata('nama_pelanggan');?> ....!!!</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Segera bayar listrik anda, lebih indah hidup anda. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
                   <p data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary py-3 px-5 btn-pill">Lihat Tagihan</a></p>
 
@@ -97,7 +97,7 @@
       <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
-            <h2 class="section-title">Courses</h2>
+            <h2 class="section-title">Tagihan</h2>
           </div>
         </div>
       </div>
